@@ -8,28 +8,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- WRAPPER UTAMA (Dark Mode Base & Anti Macet) --- */
+        /* --- WRAPPER UTAMA (Light Mode Base & Anti Macet) --- */
         .lynk-wrapper {
             font-family: 'Inter', sans-serif; 
-            background-color: #101010; /* Threads Dark Background */
-            color: #f3f5f7;
+            background-color: #ffffff; /* Background Putih */
+            color: #1a1a1a; /* Teks Hitam */
             width: 100%;
             position: relative;
             overflow-x: hidden;
             padding-bottom: 50px;
         }
 
-        /* --- THREADS UI ELEMENTS --- */
+        /* --- THREADS UI ELEMENTS (LIGHT) --- */
         .thread-line {
             position: absolute;
             left: 24px; top: 70px; bottom: -20px;
             width: 2px;
-            background-color: #333333;
+            background-color: #e5e7eb; /* Garis Abu Terang */
             z-index: 0;
         }
         
         .thread-card {
-            border-bottom: 1px solid #252525;
+            border-bottom: 1px solid #f3f4f6; /* Border sangat halus */
             padding: 24px 0;
             position: relative;
         }
@@ -46,6 +46,12 @@
         }
 
         /* --- SLIDER RESULT (Wide Landscape) --- */
+        .slider-section {
+            background-color: #f9fafb; /* Sedikit abu-abu untuk pembeda */
+            border-top: 1px solid #f3f4f6;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
         .slider-container {
             position: relative;
             width: 100%;
@@ -54,7 +60,7 @@
             touch-action: pan-y; 
         }
 
-        /* Fade Effect Gelap */
+        /* Fade Effect Putih */
         .slider-container::before,
         .slider-container::after {
             content: "";
@@ -63,36 +69,36 @@
             z-index: 2;
             pointer-events: none;
         }
-        .slider-container::before { left: 0; background: linear-gradient(to right, #101010, transparent); }
-        .slider-container::after { right: 0; background: linear-gradient(to left, #101010, transparent); }
+        .slider-container::before { left: 0; background: linear-gradient(to right, #f9fafb, transparent); }
+        .slider-container::after { right: 0; background: linear-gradient(to left, #f9fafb, transparent); }
 
         .slide-track {
             display: flex;
-            /* RUMUS: (280px lebar + 10px margin) * 10 Total Slide */
             width: calc(290px * 10); 
             animation: scroll 35s linear infinite;
         }
 
-        /* FITUR PAUSE: Berhenti saat disentuh */
+        /* FITUR PAUSE */
         .slider-container:hover .slide-track,
         .slider-container:active .slide-track {
             animation-play-state: paused;
         }
 
         .slide {
-            height: 160px; /* Ukuran Landscape Pendek */
+            height: 160px; 
             width: 280px;  
             margin-right: 10px;
             flex-shrink: 0;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid #333;
-            background: #1a1a1a;
-            cursor: zoom-in; /* Cursor Zoom biar keliatan bisa dilihat detail */
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Shadow halus */
+            cursor: zoom-in;
         }
         .slide:active { cursor: grabbing; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s;}
-        .slide:hover img { opacity: 1; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;}
+        .slide:hover img { transform: scale(1.02); }
         
         @keyframes scroll {
             0% { transform: translateX(0); }
@@ -104,9 +110,9 @@
 
     <div class="lynk-wrapper">
 
-        <div class="w-full flex justify-center py-6 border-b border-[#252525] sticky top-0 bg-[#101010]/95 backdrop-blur-md z-50">
-            <svg aria-label="Threads" role="img" viewBox="0 0 192 192" width="22" height="22" fill="#ffffff"><path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.3586 44.7443 69.0913 49.3284 58.8252 57.7929C47.7205 66.9466 41.6331 79.2885 41.6331 93.6338C41.6331 107.979 47.7205 120.321 58.8252 129.475C68.9696 137.838 82.0245 142.422 96.656 142.535C110.273 142.641 123.107 137.892 133.018 128.987C135.093 127.123 135.253 123.941 133.375 121.884C131.498 119.827 128.283 119.667 126.208 121.531C118.067 128.845 107.616 132.553 96.7645 132.467C85.1691 132.377 74.5204 128.705 66.2536 121.89C57.6534 114.801 52.8876 105.111 52.8876 93.6338C52.8876 82.1569 57.6534 72.4665 66.2536 65.3771C74.3986 58.6599 84.9752 54.9587 96.4851 54.9587C96.7302 54.9587 96.9745 54.9594 97.2183 54.9609C116.53 55.0841 127.702 67.288 129.231 87.7925C125.795 86.8329 122.112 86.4168 118.272 86.4168C101.461 86.4168 89.2687 94.7554 89.2687 108.062C89.2687 116.326 94.2655 121.603 102.247 121.603C110.686 121.603 116.969 116.111 119.851 107.412C120.355 105.889 120.782 104.309 121.133 102.68C123.183 103.541 125.297 104.57 127.42 105.77C127.458 110.169 127.286 117.844 123.367 125.043C122.067 127.429 124.962 130.297 126.273 127.915C130.824 119.648 131.289 111.028 131.216 105.903C131.215 105.823 131.213 105.744 131.212 105.664C138.834 110.279 146.471 115.658 149.333 117.842C151.488 119.486 154.593 119.116 156.252 117.016C157.911 114.916 157.575 111.879 155.42 110.235C150.395 106.402 142.179 100.677 135.347 95.8872C136.25 93.5936 137.07 91.3175 137.828 89.068C143.208 60.108 123.824 34.6212 97.464 34.425C97.3371 34.4243 97.2102 34.4243 97.0833 34.4243C78.963 34.4243 62.7767 40.0153 50.2529 50.3396C36.7028 61.5097 29.2734 76.5688 29.2734 94.0722C29.2734 111.576 36.7028 126.635 50.2529 137.805C62.6366 148.012 78.5638 153.606 96.4146 153.733C114.364 153.873 131.325 147.568 144.372 135.845C146.398 134.025 146.541 130.932 144.735 128.913C142.928 126.894 139.859 126.749 137.833 128.569C126.49 138.759 111.724 144.241 96.0886 144.119C81.166 144.026 67.5714 139.313 56.8838 130.509C45.3995 122.38 40.383 109.529 40.383 94.0722C40.383 78.6159 45.3995 65.7645 56.8838 57.6358C67.7552 48.747 81.3364 43.9936 97.0833 43.9936C97.3512 43.9936 97.6186 43.9943 97.8856 43.9959C118.892 44.1305 130.019 56.7601 131.91 76.7578C132.355 81.4597 132.227 85.2599 131.621 88.4287C130.315 87.8929 128.98 87.382 127.618 86.9142C127.185 86.8373 126.746 86.7909 126.301 86.7456C126.069 86.7219 125.836 86.6982 125.602 86.6713C124.783 86.5772 123.957 86.5298 123.126 86.5298C120.311 86.5298 117.756 86.9536 115.542 87.7589C112.564 88.8422 110.158 90.6231 108.384 93.1179C105.942 90.2323 102.502 88.5862 98.7186 88.5862C93.0076 88.5862 88.5843 93.1118 88.5843 100.569C88.5843 108.681 94.0536 113.871 101.405 113.871C107.57 113.871 112.062 109.919 114.156 103.541C114.614 105.101 114.996 106.636 115.309 108.136C112.164 114.912 107.412 118.351 101.405 118.351C91.4883 118.351 84.8055 111.456 84.8055 100.569C84.8055 90.7621 91.9566 81.9535 103.181 81.9535C108.73 81.9535 113.324 84.2882 116.183 88.3551C116.183 88.3551 116.183 88.3551ZM108.368 99.4893C107.545 95.8427 104.975 93.3031 101.595 93.3031C99.2076 93.3031 97.4369 95.0353 97.4369 98.056C97.4369 101.214 99.2977 103.354 102.324 103.354C105.513 103.354 107.696 101.685 108.368 99.4893Z"/></svg>
-            <span class="ml-2 text-xs font-bold tracking-widest text-[#777]">PERSONAL BRANDING</span>
+        <div class="w-full flex justify-center py-6 border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-md z-50">
+            <svg aria-label="Threads" role="img" viewBox="0 0 192 192" width="22" height="22" fill="#000000"><path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.3586 44.7443 69.0913 49.3284 58.8252 57.7929C47.7205 66.9466 41.6331 79.2885 41.6331 93.6338C41.6331 107.979 47.7205 120.321 58.8252 129.475C68.9696 137.838 82.0245 142.422 96.656 142.535C110.273 142.641 123.107 137.892 133.018 128.987C135.093 127.123 135.253 123.941 133.375 121.884C131.498 119.827 128.283 119.667 126.208 121.531C118.067 128.845 107.616 132.553 96.7645 132.467C85.1691 132.377 74.5204 128.705 66.2536 121.89C57.6534 114.801 52.8876 105.111 52.8876 93.6338C52.8876 82.1569 57.6534 72.4665 66.2536 65.3771C74.3986 58.6599 84.9752 54.9587 96.4851 54.9587C96.7302 54.9587 96.9745 54.9594 97.2183 54.9609C116.53 55.0841 127.702 67.288 129.231 87.7925C125.795 86.8329 122.112 86.4168 118.272 86.4168C101.461 86.4168 89.2687 94.7554 89.2687 108.062C89.2687 116.326 94.2655 121.603 102.247 121.603C110.686 121.603 116.969 116.111 119.851 107.412C120.355 105.889 120.782 104.309 121.133 102.68C123.183 103.541 125.297 104.57 127.42 105.77C127.458 110.169 127.286 117.844 123.367 125.043C122.067 127.429 124.962 130.297 126.273 127.915C130.824 119.648 131.289 111.028 131.216 105.903C131.215 105.823 131.213 105.744 131.212 105.664C138.834 110.279 146.471 115.658 149.333 117.842C151.488 119.486 154.593 119.116 156.252 117.016C157.911 114.916 157.575 111.879 155.42 110.235C150.395 106.402 142.179 100.677 135.347 95.8872C136.25 93.5936 137.07 91.3175 137.828 89.068C143.208 60.108 123.824 34.6212 97.464 34.425C97.3371 34.4243 97.2102 34.4243 97.0833 34.4243C78.963 34.4243 62.7767 40.0153 50.2529 50.3396C36.7028 61.5097 29.2734 76.5688 29.2734 94.0722C29.2734 111.576 36.7028 126.635 50.2529 137.805C62.6366 148.012 78.5638 153.606 96.4146 153.733C114.364 153.873 131.325 147.568 144.372 135.845C146.398 134.025 146.541 130.932 144.735 128.913C142.928 126.894 139.859 126.749 137.833 128.569C126.49 138.759 111.724 144.241 96.0886 144.119C81.166 144.026 67.5714 139.313 56.8838 130.509C45.3995 122.38 40.383 109.529 40.383 94.0722C40.383 78.6159 45.3995 65.7645 56.8838 57.6358C67.7552 48.747 81.3364 43.9936 97.0833 43.9936C97.3512 43.9936 97.6186 43.9943 97.8856 43.9959C118.892 44.1305 130.019 56.7601 131.91 76.7578C132.355 81.4597 132.227 85.2599 131.621 88.4287C130.315 87.8929 128.98 87.382 127.618 86.9142C127.185 86.8373 126.746 86.7909 126.301 86.7456C126.069 86.7219 125.836 86.6982 125.602 86.6713C124.783 86.5772 123.957 86.5298 123.126 86.5298C120.311 86.5298 117.756 86.9536 115.542 87.7589C112.564 88.8422 110.158 90.6231 108.384 93.1179C105.942 90.2323 102.502 88.5862 98.7186 88.5862C93.0076 88.5862 88.5843 93.1118 88.5843 100.569C88.5843 108.681 94.0536 113.871 101.405 113.871C107.57 113.871 112.062 109.919 114.156 103.541C114.614 105.101 114.996 106.636 115.309 108.136C112.164 114.912 107.412 118.351 101.405 118.351C91.4883 118.351 84.8055 111.456 84.8055 100.569C84.8055 90.7621 91.9566 81.9535 103.181 81.9535C108.73 81.9535 113.324 84.2882 116.183 88.3551C116.183 88.3551 116.183 88.3551 116.183 88.3551ZM108.368 99.4893C107.545 95.8427 104.975 93.3031 101.595 93.3031C99.2076 93.3031 97.4369 95.0353 97.4369 98.056C97.4369 101.214 99.2977 103.354 102.324 103.354C105.513 103.354 107.696 101.685 108.368 99.4893Z"/></svg>
+            <span class="ml-2 text-xs font-bold tracking-widest text-gray-500">PERSONAL BRANDING</span>
         </div>
 
         <section class="w-full px-6 pt-10 pb-8 relative z-10">
@@ -115,29 +121,29 @@
                 <div class="thread-card border-none pb-0">
                     <div class="flex gap-4">
                         <div class="flex-shrink-0 relative z-10">
-                            <div class="w-12 h-12 rounded-full bg-gray-800 overflow-hidden border-2 border-[#1a1a1a]">
+                            <div class="w-12 h-12 rounded-full bg-gray-100 overflow-hidden border border-gray-200 shadow-sm">
                                 <img src="https://cdn.lynkid.my.id/draft-products/03-12-2025/1764744948136_5742658.png" class="w-full h-full object-cover">
                             </div>
                         </div>
                         
                         <div class="flex-1 pt-1">
                             <div class="flex justify-between items-center mb-1">
-                                <h3 class="text-sm font-bold text-white">ajengwahys <span class="text-blue-500 text-[10px]">✔</span></h3>
-                                <span class="text-xs text-gray-500">now</span>
+                                <h3 class="text-sm font-bold text-gray-900">ajengwahys <span class="text-blue-500 text-[10px]">✔</span></h3>
+                                <span class="text-xs text-gray-400">now</span>
                             </div>
                             
-                            <p class="text-[15px] text-[#f3f5f7] leading-snug mb-3 font-medium">
+                            <p class="text-[15px] text-gray-800 leading-snug mb-3 font-medium">
                                 Main Threads tapi cuma jadi <i>silent reader</i>? Sayang banget.
                             </p>
                             
-                            <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            <p class="text-sm text-gray-600 leading-relaxed mb-5">
                                 Padahal di sini tempat paling gampang buat bangun <i>trust</i> dan <i>authority</i>. Asal tau caranya. Yuk, kita ubah akunmu jadi magnet peluang lewat 3 sesi privat ini.
                             </p>
 
-                            <div class="border border-[#333] rounded-xl p-4 bg-[#151515]">
+                            <div class="border border-gray-200 rounded-xl p-4 bg-gray-50">
                                 <p class="text-[10px] text-gray-500 uppercase tracking-wide mb-1">THE OFFER</p>
-                                <h2 class="text-lg font-bold text-white">1:1 Threads Mentorship</h2>
-                                <p class="text-xs text-gray-400">3x Gmeet + Lifetime WA "Jalur Dalem"</p>
+                                <h2 class="text-lg font-bold text-gray-900">1:1 Threads Mentorship</h2>
+                                <p class="text-xs text-gray-600">3x Gmeet + Lifetime WA "Jalur Dalem"</p>
                             </div>
 
                         </div>
@@ -149,15 +155,15 @@
                 <div class="thread-card">
                     <div class="flex gap-4">
                         <div class="flex-shrink-0 relative z-10">
-                            <div class="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-sm border border-[#333]">🤔</div>
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-sm border border-gray-200 shadow-sm">🤔</div>
                         </div>
                         
                         <div class="flex-1 pt-1">
-                            <h3 class="text-sm font-bold text-white mb-1">Kenapa Threads?</h3>
-                            <p class="text-sm text-gray-400 leading-relaxed">
-                                Karena di sini orang nyari <i>value</i> dan juga opini.
+                            <h3 class="text-sm font-bold text-gray-900 mb-1">Kenapa Threads?</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Karena di sini orang nyari <i>value</i> dan opini.
                                 <br><br>
-                                Tapi realitanya Banyak yang semangat di awal, terus bingung mau ngutas apa besoknya. Akhirnya? <i>Ghosting</i>. Akun jadi sepi lagi.
+                                Tapi realitanya: Banyak yang semangat di awal, terus bingung mau ngetwit apa besoknya. Akhirnya? <i>Ghosting</i>. Akun jadi sepi lagi.
                             </p>
                         </div>
                     </div>
@@ -167,23 +173,23 @@
                 <div class="thread-card">
                     <div class="flex gap-4">
                         <div class="flex-shrink-0 relative z-10">
-                            <div class="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-sm border border-[#333]">💡</div>
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-sm border border-gray-200 shadow-sm">💡</div>
                         </div>
                         
                         <div class="flex-1 pt-1">
-                            <h3 class="text-sm font-bold text-white mb-4">Apa aja yang kita bahas di 3 Sesi?</h3>
+                            <h3 class="text-sm font-bold text-gray-900 mb-4">Apa aja yang kita bahas di 3 Sesi?</h3>
                             
                             <ul class="space-y-5">
-                                <li class="text-sm text-gray-300 relative pl-4 border-l-2 border-[#333]">
-                                    <span class="block text-xs font-bold text-white mb-1">Sesi 1: Bongkar Pondasi Brand</span>
+                                <li class="text-sm text-gray-600 relative pl-4 border-l-2 border-gray-200">
+                                    <span class="block text-xs font-bold text-gray-900 mb-1">Sesi 1: Bongkar Pondasi Brand</span>
                                     Kita gali siapa kamu sebenarnya. Tuntuin <i>Niche</i> dan <i>Voice</i> biar tulisan kamu dibaca.
                                 </li>
-                                <li class="text-sm text-gray-300 relative pl-4 border-l-2 border-[#333]">
-                                    <span class="block text-xs font-bold text-white mb-1">Sesi 2: Strategi Konten Anti-Pusing</span>
-                                    Belajar teknik <i>storytelling</i> yang relatable. Cara bikin utas (thread) panjang yang dibaca orang sampai habis.
+                                <li class="text-sm text-gray-600 relative pl-4 border-l-2 border-gray-200">
+                                    <span class="block text-xs font-bold text-gray-900 mb-1">Sesi 2: Strategi Konten Anti-Pusing</span>
+                                    Belajar teknik <i>storytelling</i> yang *relatable*. Cara bikin utas (thread) panjang yang dibaca orang sampai habis.
                                 </li>
-                                <li class="text-sm text-gray-300 relative pl-4 border-l-2 border-[#333]">
-                                    <span class="block text-xs font-bold text-white mb-1">Sesi 3: Konsisten Tanpa Burnout</span>
+                                <li class="text-sm text-gray-600 relative pl-4 border-l-2 border-gray-200">
+                                    <span class="block text-xs font-bold text-gray-900 mb-1">Sesi 3: Konsisten Tanpa Burnout</span>
                                     Gimana caranya tetep aktif tanpa ngerasa terbebani. Bangun citra profesional yang natural, bukan pencitraan.
                                 </li>
                             </ul>
@@ -195,12 +201,12 @@
                 <div class="thread-card border-none">
                     <div class="flex gap-4">
                         <div class="flex-shrink-0 relative z-10">
-                            <div class="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-sm border border-blue-500/30 text-blue-400">💎</div>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-sm border border-blue-100 text-blue-600">💎</div>
                         </div>
                         
                         <div class="flex-1 pt-1">
-                            <h3 class="text-sm font-bold mb-1 text-white">Lifetime WA Mentoring</h3>
-                            <p class="text-sm text-gray-400 leading-relaxed">
+                            <h3 class="text-sm font-bold mb-1 text-gray-900">Lifetime WA Mentoring</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
                                 Sesi Gmeet cuma permulaan. Abis itu, kamu dapet akses <strong>"jalur dalem" ke WA pribadiku</strong> seumur hidup.
                                 <br><br>
                                 Ada draft konten, tapi ragu mau post? Kirim aja, kita bedah bareng sebelum di post.
@@ -212,13 +218,13 @@
             </div>
         </section>
 
-        <section class="w-full py-10 bg-[#0a0a0a] border-y border-[#222] reveal-node relative z-20">
+        <section class="w-full py-10 slider-section reveal-node relative z-20">
             <div class="px-6 mb-6">
-                <h3 class="text-center text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">The Real Impact</h3>
-                <p class="text-center text-[10px] text-gray-400 mt-2 max-w-xs mx-auto leading-relaxed">
+                <h3 class="text-center text-xs font-bold tracking-[0.2em] text-gray-400 uppercase">The Real Impact</h3>
+                <p class="text-center text-[10px] text-gray-500 mt-2 max-w-xs mx-auto leading-relaxed">
                    Bukan cuma angka followers. Ini bukti kalau branding yang kuat mendatangkan <strong>Endorsement & Client</strong> sendiri.
                 </p>
-                <p class="text-center text-[9px] text-gray-600 mt-2 italic">(Tahan gambar untuk melihat detail)</p>
+                <p class="text-center text-[9px] text-gray-400 mt-2 italic">(Tahan gambar untuk melihat detail)</p>
             </div>
             
             <div class="slider-container">
@@ -244,26 +250,26 @@
             <div class="max-w-lg mx-auto">
                 
                 <div class="mb-8 text-center">
-                    <h3 class="text-sm font-bold text-white mb-4">Siapa yang butuh sesi ini?</h3>
+                    <h3 class="text-sm font-bold text-gray-900 mb-4">Siapa yang butuh sesi ini?</h3>
                     <div class="flex flex-wrap justify-center gap-2">
-                        <span class="px-3 py-1.5 bg-[#1a1a1a] text-gray-300 rounded-full text-[10px] border border-[#333]">Pemula Branding</span>
-                        <span class="px-3 py-1.5 bg-[#1a1a1a] text-gray-300 rounded-full text-[10px] border border-[#333]">Freelancer/Remote Worker</span>
-                        <span class="px-3 py-1.5 bg-[#1a1a1a] text-gray-300 rounded-full text-[10px] border border-[#333]">Small Biz Owner</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-gray-600 rounded-full text-[10px] border border-gray-200">Pemula Branding</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-gray-600 rounded-full text-[10px] border border-gray-200">Freelancer/Remote Worker</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-gray-600 rounded-full text-[10px] border border-gray-200">Small Biz Owner</span>
                     </div>
                 </div>
 
-                <div class="border border-red-900/20 bg-red-900/5 rounded-xl p-5">
+                <div class="border border-red-200 bg-red-50 rounded-xl p-5">
                     <div class="flex items-center gap-2 mb-3">
-                         <span class="text-red-400 text-xs">⚠️</span>
-                         <h4 class="text-[10px] font-bold text-red-400 uppercase tracking-wider">Catatan Penting</h4>
+                         <span class="text-red-500 text-xs">⚠️</span>
+                         <h4 class="text-[10px] font-bold text-red-600 uppercase tracking-wider">Catatan Penting</h4>
                     </div>
                    
-                    <ul class="text-[11px] text-gray-400 space-y-2 list-disc pl-4 leading-relaxed">
+                    <ul class="text-[11px] text-gray-600 space-y-2 list-disc pl-4 leading-relaxed">
                         <li>Jadwal Gmeet setiap <strong>Weekend</strong> (Fleksibel).</li>
                         <li><strong>No Show = Hangus.</strong> Tolong hargai waktu kita ya.</li>
                         <li>Reschedule maksimal <strong>12 jam</strong> sebelum sesi dimulai.</li>
                     </ul>
-                    <p class="text-[10px] text-gray-500 mt-4 pt-3 border-t border-red-900/20 italic">
+                    <p class="text-[10px] text-gray-500 mt-4 pt-3 border-t border-red-100 italic">
                         Disclaimer: Mentoring ini memberi arah dan strategi. Hasil (klien/endorse) balik lagi ke konsistensi eksekusi masing-masing.
                     </p>
                 </div>
@@ -271,8 +277,8 @@
             </div>
         </section>
 
-        <section class="w-full px-6 py-12 flex flex-col items-center text-center border-t border-[#222] relative z-10">
-            <h2 class="text-xl font-bold mb-2 text-white">Jangan biarkan akunmu berdebu.</h2>
+        <section class="w-full px-6 py-12 flex flex-col items-center text-center border-t border-gray-100 relative z-10">
+            <h2 class="text-xl font-bold mb-2 text-gray-900">Jangan biarkan akunmu berdebu.</h2>
             <p class="text-xs text-gray-500 max-w-xs mb-6">
                 Waktunya bersuara dan bangun otoritasmu sekarang.
             </p>
