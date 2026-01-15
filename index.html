@@ -72,10 +72,17 @@
         .slider-container::before { left: 0; background: linear-gradient(to right, #f9fafb, transparent); }
         .slider-container::after { right: 0; background: linear-gradient(to left, #f9fafb, transparent); }
 
+        /* --- UPDATE LOGIC SLIDER --- */
+        /* Total slide unik sekarang: 8 */
+        /* Total slide (unik + duplikat): 16 */
+        /* Lebar per slide (termasuk margin): 290px */
+        
         .slide-track {
             display: flex;
-            width: calc(290px * 10); 
-            animation: scroll 35s linear infinite;
+            /* 290px * 16 slides total */
+            width: calc(290px * 16); 
+            /* Durasi diperlambat sedikit biar enak dilihat karena slide makin banyak */
+            animation: scroll 60s linear infinite; 
         }
 
         /* FITUR PAUSE */
@@ -102,7 +109,8 @@
         
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-290px * 5)); } 
+            /* Geser sejauh 8 slide pertama (unik) */
+            100% { transform: translateX(calc(-290px * 8)); } 
         }
     </style>
 </head>
@@ -167,7 +175,7 @@
                             </p>
                         </div>
                     </div>
-                     <div class="thread-line"></div>
+                      <div class="thread-line"></div>
                 </div>
 
                 <div class="thread-card">
@@ -235,12 +243,20 @@
                     <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297525961_2904016.png" alt="Bukti 3"></div>
                     <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297547235_1604744.png" alt="Bukti 4"></div>
                     <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297609159_1474991.png" alt="Bukti 5"></div>
+                    
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/15-01-2026/1768456201834_1126760.png?width=630&amp;quality=90&amp;format=webp" alt="Testimoni Baru 1"></div>
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/15-01-2026/1768456705086_8159404.png?width=630&amp;quality=90&amp;format=webp" alt="Testimoni Baru 2"></div>
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/15-01-2026/1768456762569_5540008.png?width=630&amp;quality=90&amp;format=webp" alt="Testimoni Baru 3"></div>
 
-                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297774417_7591110.png" alt="Bukti 1"></div>
-                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297482136_9069795.png" alt="Bukti 2"></div>
-                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297503427_7397070.png" alt="Bukti 3"></div>
-                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297525961_2904016.png" alt="Bukti 4"></div>
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297482136_9069795.png" alt="Bukti 1"></div>
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297503427_7397070.png" alt="Bukti 2"></div>
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297525961_2904016.png" alt="Bukti 3"></div>
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297547235_1604744.png" alt="Bukti 4"></div>
                     <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/21-12-2025/1766297609159_1474991.png" alt="Bukti 5"></div>
+                    
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/15-01-2026/1768456201834_1126760.png?width=630&amp;quality=90&amp;format=webp" alt="Testimoni Baru 1"></div>
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/15-01-2026/1768456705086_8159404.png?width=630&amp;quality=90&amp;format=webp" alt="Testimoni Baru 2"></div>
+                    <div class="slide"><img src="https://cdn.lynkid.my.id/draft-products/15-01-2026/1768456762569_5540008.png?width=630&amp;quality=90&amp;format=webp" alt="Testimoni Baru 3"></div>
 
                 </div>
             </div>
@@ -263,7 +279,7 @@
                          <span class="text-red-500 text-xs">⚠️</span>
                          <h4 class="text-[10px] font-bold text-red-600 uppercase tracking-wider">Catatan Penting</h4>
                     </div>
-                   
+                    
                     <ul class="text-[11px] text-gray-600 space-y-2 list-disc pl-4 leading-relaxed">
                         <li>Jadwal Gmeet setiap <strong>Weekend</strong> (Fleksibel).</li>
                         <li><strong>No Show = Hangus.</strong> Tolong hargai waktu kita ya.</li>
